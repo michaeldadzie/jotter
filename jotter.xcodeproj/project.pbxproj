@@ -7,18 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		149B16EA2ACA076100787715 /* jotterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B16E92ACA076100787715 /* jotterApp.swift */; };
+		149B16EA2ACA076100787715 /* JotterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B16E92ACA076100787715 /* JotterApp.swift */; };
 		149B16EC2ACA076100787715 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B16EB2ACA076100787715 /* ContentView.swift */; };
 		149B16EE2ACA076200787715 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 149B16ED2ACA076200787715 /* Assets.xcassets */; };
 		149B16F12ACA076200787715 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 149B16F02ACA076200787715 /* Preview Assets.xcassets */; };
+		149B16FF2ACA09FC00787715 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B16FE2ACA09FC00787715 /* LoginView.swift */; };
+		149B17022ACA118A00787715 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B17012ACA118A00787715 /* SignUpView.swift */; };
+		149B17052ACA145100787715 /* AuthModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B17042ACA145100787715 /* AuthModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		149B16E62ACA076100787715 /* jotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		149B16E92ACA076100787715 /* jotterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jotterApp.swift; sourceTree = "<group>"; };
+		149B16E92ACA076100787715 /* JotterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JotterApp.swift; sourceTree = "<group>"; };
 		149B16EB2ACA076100787715 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		149B16ED2ACA076200787715 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		149B16F02ACA076200787715 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		149B16FE2ACA09FC00787715 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		149B17012ACA118A00787715 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		149B17042ACA145100787715 /* AuthModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +57,12 @@
 		149B16E82ACA076100787715 /* jotter */ = {
 			isa = PBXGroup;
 			children = (
-				149B16E92ACA076100787715 /* jotterApp.swift */,
-				149B16EB2ACA076100787715 /* ContentView.swift */,
+				149B16FB2ACA09BB00787715 /* Utils */,
+				149B16FA2ACA09A500787715 /* Model */,
+				149B16F92ACA099800787715 /* Services */,
+				149B16F82ACA099100787715 /* Extensions */,
+				149B16F72ACA098200787715 /* Core */,
+				149B16E92ACA076100787715 /* JotterApp.swift */,
 				149B16ED2ACA076200787715 /* Assets.xcassets */,
 				149B16EF2ACA076200787715 /* Preview Content */,
 			);
@@ -65,6 +75,77 @@
 				149B16F02ACA076200787715 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		149B16F72ACA098200787715 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				149B17002ACA0A0E00787715 /* Root */,
+				149B16FC2ACA09CC00787715 /* Authentication */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		149B16F82ACA099100787715 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		149B16F92ACA099800787715 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		149B16FA2ACA09A500787715 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		149B16FB2ACA09BB00787715 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				149B17032ACA13FA00787715 /* ViewModifiers */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		149B16FC2ACA09CC00787715 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				149B16FD2ACA09DA00787715 /* Views */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		149B16FD2ACA09DA00787715 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				149B16FE2ACA09FC00787715 /* LoginView.swift */,
+				149B17012ACA118A00787715 /* SignUpView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		149B17002ACA0A0E00787715 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				149B16EB2ACA076100787715 /* ContentView.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		149B17032ACA13FA00787715 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				149B17042ACA145100787715 /* AuthModifier.swift */,
+			);
+			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +218,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				149B17022ACA118A00787715 /* SignUpView.swift in Sources */,
+				149B16FF2ACA09FC00787715 /* LoginView.swift in Sources */,
+				149B17052ACA145100787715 /* AuthModifier.swift in Sources */,
 				149B16EC2ACA076100787715 /* ContentView.swift in Sources */,
-				149B16EA2ACA076100787715 /* jotterApp.swift in Sources */,
+				149B16EA2ACA076100787715 /* JotterApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,19 +26,19 @@ struct LoginView: View {
                 Text("ForgotView")
             } label: {
                 Text("Forgot Password?")
-                    .modifier(AuthButtonModifier())
+                    .font(.footnote)
+                    .fontWeight(.semibold)
+                    .padding(.vertical)
+                    .padding(.trailing, 28)
+                    .foregroundColor(.primary)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
             }
             
             Button {
                 
             } label: {
                 Text("Login")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.white)
-                    .frame(width: 352, height: 44)
-                    .background(.black)
-                    .cornerRadius(8)
+                    .modifier(AuthButtonModifier())
             }
             
             Spacer()

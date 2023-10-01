@@ -14,11 +14,12 @@ struct AuthTextFieldModifier: ViewModifier {
 struct AuthButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(.footnote)
+            .font(.subheadline)
             .fontWeight(.semibold)
-            .padding(.vertical)
-            .padding(.trailing, 28)
-            .foregroundColor(.primary)
-            .frame(maxWidth: .infinity, alignment: .trailing)
+            .foregroundColor(.white)
+            .frame(width: 352, height: 44)
+            .background(.black)
+            .cornerRadius(8)
+            
     }
 }

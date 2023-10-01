@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  jotter
-//
-//  Created by Michael Dadzie on 10/1/23.
-//
-
 import SwiftUI
 
 struct ContentView: View {

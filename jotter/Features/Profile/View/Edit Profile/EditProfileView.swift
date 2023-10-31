@@ -1,9 +1,14 @@
+import PhotosUI
 import SwiftUI
 
 struct EditProfileView: View {
+    let user: User
+    
     @State private var bio = ""
     @State private var link = ""
     @State private var isPrivateProfile = false
+    @Environment(\.dismiss) var dismiss
+    @StateObject var viewModel = EditProfileViewModel()
     
     var body: some View {
         NavigationStack {
@@ -16,12 +21,22 @@ struct EditProfileView: View {
                         VStack(alignment: .leading) {
                             Text("Name")
                                 .fontWeight(.semibold)
-                            Text("Michael Dadzie")
+                            Text(user.fullname)
                         }
                         
                         Spacer()
                         
-                        CircularProfileImageView()
+                        PhotosPicker(selection: $viewModel.selectedItem) {
+                            if let image =  viewModel.profileImage {
+                                image
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(Circle())
+                            } else {
+                                CircularProfileImageView(user: user, size:  .small)
+                            }
+                        }
                     }
                     
                     Divider()
@@ -31,7 +46,7 @@ struct EditProfileView: View {
                             .fontWeight(.semibold)
                         TextField("Edit your bio...", text: $bio, axis: .vertical)
                     }
-                   
+                    
                     Divider()
                     
                     VStack(alignment: .leading) {
@@ -58,16 +73,21 @@ struct EditProfileView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {}
+                    Button("Cancel") { dismiss() }
                         .font(.subheadline)
                         .foregroundColor(.black)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {}
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.black)
+                    Button("Done") {
+                        Task {
+                            try await viewModel.updateProfile()
+                            dismiss()
+                        }
+                    }
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.black)
                 }
             }
         }
@@ -76,6 +96,6 @@ struct EditProfileView: View {
 
 struct EditProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        EditProfileView()
+        EditProfileView(user: dev.user)
     }
 }

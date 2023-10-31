@@ -1,20 +1,22 @@
 import SwiftUI
 
 struct ThreadCellView: View {
+    let jot: Jot
+    
     var body: some View {
         VStack {
             HStack(alignment: .top, spacing: 12) {
-                CircularProfileImageView()
+                CircularProfileImageView(user: jot.user, size: .small)
                 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
-                        Text("michaeldadzie")
+                        Text(jot.user?.username ?? "")
                             .font(.footnote)
                             .fontWeight(.semibold)
                         
                         Spacer()
                         
-                        Text("10m")
+                        Text(jot.timestamp.timeStampString())
                             .font(.caption)
                             .foregroundColor(Color(.systemGray3))
                         
@@ -26,7 +28,7 @@ struct ThreadCellView: View {
                         }
                     }
                     
-                    Text("michael is an ios dev")
+                    Text(jot.jot)
                         .font(.footnote)
                         .multilineTextAlignment(.leading)
                     
@@ -68,6 +70,6 @@ struct ThreadCellView: View {
 
 struct ThreadCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ThreadCellView()
+        ThreadCellView(jot: dev.jot)
     }
 }

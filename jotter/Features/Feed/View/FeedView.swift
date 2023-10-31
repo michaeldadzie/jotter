@@ -1,26 +1,28 @@
 import SwiftUI
 
 struct FeedView: View {
+    @StateObject var viewModel = FeedViewModel()
+    
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
                 LazyVStack {
-                    ForEach(0...2, id: \.self) {thread in
-                        ThreadCellView()
+                    ForEach(viewModel.jots) { jot in
+                        ThreadCellView(jot: jot)
                     }
                 }
             }
             .refreshable {
-                print("DEBUG: refresh")
+                Task { try await viewModel.fetchJots() }
             }
             .navigationTitle("Jotter")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Image(systemName: "arrow.counterclockwise")
-                        .foregroundColor(.black)
-                }
-            }
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    Image(systemName: "arrow.counterclockwise")
+//                        .foregroundColor(.black)
+//                }
+//            }
         }
     }
 }

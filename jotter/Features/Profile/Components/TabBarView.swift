@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct TabBarView: View {
+    @StateObject var viewModel: UserJotsViewModel
     @State private var selectedFilter: ProfileThreadFilter = .threads
     @Namespace var animation
     
@@ -8,6 +9,11 @@ struct TabBarView: View {
         let count = CGFloat(ProfileThreadFilter.allCases.count)
         return UIScreen.main.bounds.width / count - 20
     }
+    
+    init(user: User) {
+        self._viewModel = StateObject(wrappedValue: UserJotsViewModel(user: user))
+    }
+    
     var body: some View {
         VStack {
             HStack {
@@ -38,8 +44,8 @@ struct TabBarView: View {
             }
             
             LazyVStack {
-                ForEach(0...3, id: \.self) { thread in
-                    //                                ThreadCell()
+                ForEach(viewModel.jots) { jot in
+                    ThreadCellView(jot: jot)
                 }
             }
         }
@@ -49,6 +55,6 @@ struct TabBarView: View {
 
 struct TabBarView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBarView()
+        TabBarView(user: dev.user)
     }
 }

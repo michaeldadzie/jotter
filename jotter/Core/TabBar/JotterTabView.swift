@@ -2,6 +2,7 @@ import SwiftUI
 
 struct JotterTabView: View {
     @State private var selectedTab = 0
+    @State private var showSheet = false
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -20,7 +21,7 @@ struct JotterTabView: View {
                 .onAppear { selectedTab = 1 }
                 .tag(1)
             
-            Text("Post")
+            Text("")
                 .tabItem {
                     Image(systemName: selectedTab == 2 ? "plus.app.fill" : "plus.app")
                         .environment(\.symbolVariants, selectedTab == 2 ? .fill : .none)
@@ -45,6 +46,15 @@ struct JotterTabView: View {
                 .tag(4)
             
         }
+        .onChange(of: selectedTab, perform: { newVal in
+            showSheet = selectedTab == 2
+        })
+        .sheet(isPresented: $showSheet, onDismiss: {
+            // TODO: fix tab selection
+            selectedTab = 0
+        }, content: {
+            CreateJotView()
+        })
         .tint(.black)
     }
 }

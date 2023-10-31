@@ -20,7 +20,7 @@ struct UserProfileView: View {
                         .cornerRadius(8)
                 }
                 
-                TabBarView()
+                TabBarView(user: user)
             }
         }
         .navigationBarTitleDisplayMode(.inline)

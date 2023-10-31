@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @StateObject var viewModel = ProfileViewModel()
+    @State private var showSheet = false
 
     private var currentUser: User? {
         return viewModel.currentUser
@@ -14,7 +15,7 @@ struct ProfileView: View {
                     ProfileHeaderView(user: currentUser)
                     
                     Button {
-                        
+                        showSheet.toggle()
                     } label: {
                         Text("Edit Profile")
                             .font(.subheadline)
@@ -28,18 +29,29 @@ struct ProfileView: View {
                             .background(.white)
                             .cornerRadius(8)
                     }
-                    
-                    TabBarView()
+                    if let user = currentUser {
+                        TabBarView(user: user)
+                    }
                 }
             }
             .padding(.horizontal)
+            .sheet(isPresented: $showSheet) {
+                if let user = currentUser {
+                    EditProfileView(user: user)
+                }
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        AuthService.shared.signOut()
+                    NavigationLink {
+                        SettingsView()
                     } label: {
                         Image(systemName: "line.3.horizontal")
                     }
+//                    Button {
+//                        AuthService.shared.signOut()
+//                    } label: {
+//                        Image(systemName: "line.3.horizontal")
+//                    }
                 }
             }
         }

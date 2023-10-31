@@ -1,5 +1,6 @@
 import Combine
-import Foundation
+import PhotosUI
+import SwiftUI
 
 class ProfileViewModel: ObservableObject {
     @Published var currentUser: User?
@@ -8,6 +9,7 @@ class ProfileViewModel: ObservableObject {
     init() {
         setupSubscribers()
     }
+    
     
     private func setupSubscribers() {
         UserService.shared.$currentUser.sink { [weak self] user in

@@ -1,6 +1,5 @@
 import Firebase
 import FirebaseFirestoreSwift
-import Foundation
 
 struct JotService {
     

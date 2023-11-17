@@ -1,12 +1,12 @@
 import Foundation
 
-enum ProfileThreadFilter: Int, CaseIterable, Identifiable {
-case threads
+enum TabBarFilter: Int, CaseIterable, Identifiable {
+case jots
 case replies
     
     var title: String {
         switch self {
-        case .threads: return "Threads"
+        case .jots: return "Jots"
         case .replies: return "Replies"
         }
     }

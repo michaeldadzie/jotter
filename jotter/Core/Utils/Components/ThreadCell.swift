@@ -1,15 +1,16 @@
 import SwiftUI
 
-struct ThreadCellView: View {
+struct ThreadCell: View {
     let jot: Jot
     
     var body: some View {
         VStack {
             HStack(alignment: .top, spacing: 12) {
-                CircularProfileImageView(user: jot.user, size: .small)
+                CircularProfileImage(user: jot.user, size: .small)
                 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
+                        // NavigationLink(value: jot.user) {}
                         Text(jot.user?.username ?? "")
                             .font(.footnote)
                             .fontWeight(.semibold)
@@ -42,13 +43,13 @@ struct ThreadCellView: View {
                         Button {
                             
                         } label: {
-                            Image(systemName: "bubble.right")
+                            Image(systemName: "text.bubble")
                         }
                         
                         Button {
                             
                         } label: {
-                            Image(systemName: "arrow.rectanglepath")
+                            Image(systemName: "arrow.2.squarepath")
                         }
                         
                         Button {
@@ -57,7 +58,7 @@ struct ThreadCellView: View {
                             Image(systemName: "paperplane")
                         }
                     }
-                    .foregroundColor(.black)
+                    .foregroundColor(Theme.primary)
                     .padding(.vertical, 8)
                 }
             }
@@ -65,11 +66,14 @@ struct ThreadCellView: View {
             Divider()
         }
         .padding()
+        //        .navigationDestination(for: User.self, destination: { user in
+        //            UserProfileView(user: user)
+        //        })
     }
 }
 
-struct ThreadCellView_Previews: PreviewProvider {
+struct ThreadCell_Previews: PreviewProvider {
     static var previews: some View {
-        ThreadCellView(jot: dev.jot)
+        ThreadCell(jot: dev.jot)
     }
 }

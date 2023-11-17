@@ -58,7 +58,7 @@ struct JotterTabView: View {
         .sheet(isPresented: $showSheet, onDismiss: {}, content: {
             CreateJotView()
         })
-        .tint(.black)
+        .tint(Theme.primary)
     }
 }
 

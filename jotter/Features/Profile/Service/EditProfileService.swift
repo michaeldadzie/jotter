@@ -2,7 +2,7 @@ import Firebase
 import FirebaseStorage
 import Foundation
 
-struct UploadImageService {
+struct EditProfileService {
     static func uploadImage(_ image: UIImage) async throws -> String? {
         guard let imageData = image.jpegData(compressionQuality: 0.25) else { return nil }
         let filename = NSUUID().uuidString

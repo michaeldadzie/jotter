@@ -1,13 +1,9 @@
 import Kingfisher
 import SwiftUI
 
-struct CircularProfileImageView: View {
+struct CircularProfileImage: View {
     var user: User?
     let size: ProfileImageSize
-    
-//    init(user: User?) {
-//        self.user = user
-//    }
     
     var body: some View {
         if let imageUrl = user?.imageUrl {
@@ -25,8 +21,8 @@ struct CircularProfileImageView: View {
     }
 }
 
-struct CircularProfileImageView_Previews: PreviewProvider {
+struct CircularProfileImage_Previews: PreviewProvider {
     static var previews: some View {
-        CircularProfileImageView(user: dev.user, size: .medium)
+        CircularProfileImage(user: dev.user, size: .medium)
     }
 }

@@ -13,13 +13,9 @@ class AuthService {
     
     @MainActor
     func login(withEmail email: String, password: String) async throws {
-        do {
-            let result = try await Auth.auth().signIn(withEmail: email, password: password)
-            self.userSession = result.user
-            try await UserService.shared.fetchCurrentUser()
-        } catch {
-            print("DEBUG: Failed to log user in with error \(error.localizedDescription)")
-        }
+        let result = try await Auth.auth().signIn(withEmail: email, password: password)
+        self.userSession = result.user
+        try await UserService.shared.fetchCurrentUser()
     }
     
     @MainActor
@@ -29,13 +25,9 @@ class AuthService {
         fullname: String,
         username: String
     ) async throws {
-        do {
-            let result = try await Auth.auth().createUser(withEmail: email, password: password)
-            self.userSession = result.user
-            try await uploadUserData(withEmail: email, fullname: fullname, username: username , id: result.user.uid)
-        } catch {
-            print("DEBUG: Failed to create user with error \(error.localizedDescription)")
-        }
+        let result = try await Auth.auth().createUser(withEmail: email, password: password)
+        self.userSession = result.user
+        try await uploadUserData(withEmail: email, fullname: fullname, username: username , id: result.user.uid)
     }
     
     @MainActor

@@ -40,8 +40,13 @@ struct LoginView: View {
             Button {
                 Task { try await viewModel.login() }
             } label: {
-                Text("Login")
-                    .modifier(AuthButtonModifier())
+                if viewModel.isLoggingIn {
+                    ProgressView()
+                        .padding(.vertical, 12)
+                } else {
+                    Text("Login")
+                        .modifier(AuthButtonModifier())
+                }
             }
             
             Spacer()
@@ -56,10 +61,15 @@ struct LoginView: View {
                     Text("Sign Up")
                         .fontWeight(.semibold)
                 }
-                .foregroundColor(.primary)
+                .foregroundColor(Theme.primary)
                 .font(.footnote)
             }
             .padding(.vertical, 16)
+        }
+        .alert("Error", isPresented: $viewModel.showingAlert) {
+            Button("OK") {}
+        } message: {
+            Text(viewModel.errorMessage ?? "Unknown error")
         }
     }
 }

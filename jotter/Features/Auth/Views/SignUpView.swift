@@ -34,8 +34,13 @@ struct SignUpView: View {
             Button {
                 Task { try await viewModel.createUser()  }
             } label: {
-                Text("Sign Up")
-                    .modifier(AuthButtonModifier())
+                if viewModel.isSigningIn {
+                    ProgressView()
+                        .padding(.vertical, 12)
+                } else {
+                    Text("Sign Up")
+                        .modifier(AuthButtonModifier())
+                }
             }
             .padding(.vertical)
             
@@ -50,10 +55,15 @@ struct SignUpView: View {
                     Text("Sign In")
                         .fontWeight(.semibold)
                 }
-                .foregroundColor(.primary)
+                .foregroundColor(Theme.primary)
                 .font(.footnote)
             }
             .padding(.vertical, 16)
+        }
+        .alert("Error", isPresented: $viewModel.showingAlert) {
+            Button("OK") {}
+        } message: {
+            Text(viewModel.errorMessage ?? "Unknown error")
         }
     }
 }

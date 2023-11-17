@@ -8,7 +8,7 @@ struct FeedView: View {
             ScrollView(showsIndicators: false) {
                 LazyVStack {
                     ForEach(viewModel.jots) { jot in
-                        ThreadCellView(jot: jot)
+                        ThreadCell(jot: jot)
                     }
                 }
             }

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct UserProfileView: View {
     let user: User
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -14,9 +15,9 @@ struct UserProfileView: View {
                     Text("Follow")
                         .font(.subheadline)
                         .fontWeight(.semibold)
-                        .foregroundColor(.white)
+                        .foregroundColor(Theme.secondary)
                         .frame(width: 352, height: 32)
-                        .background(.black)
+                        .background(Theme.primary)
                         .cornerRadius(8)
                 }
                 

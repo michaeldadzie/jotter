@@ -24,7 +24,7 @@ class EditProfileViewModel: ObservableObject {
     
     private func updateProfileImage() async throws {
         guard let image = self.uiImage else { return }
-        guard let imageUrl = try? await UploadImageService.uploadImage(image) else { return }
+        guard let imageUrl = try? await EditProfileService.uploadImage(image) else { return }
         try await UserService.shared.updateProfileImage(withUrl: imageUrl)
     }
 }

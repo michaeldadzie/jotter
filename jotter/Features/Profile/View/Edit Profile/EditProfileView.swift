@@ -34,7 +34,7 @@ struct EditProfileView: View {
                                     .frame(width: 40, height: 40)
                                     .clipShape(Circle())
                             } else {
-                                CircularProfileImageView(user: user, size:  .small)
+                                CircularProfileImage(user: user, size:  .small)
                             }
                         }
                     }
@@ -61,7 +61,7 @@ struct EditProfileView: View {
                 }
                 .font(.footnote)
                 .padding()
-                .background(.white)
+                .background(Theme.secondary)
                 .cornerRadius(10)
                 .overlay {
                     RoundedRectangle(cornerRadius: 10)
@@ -75,7 +75,7 @@ struct EditProfileView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel") { dismiss() }
                         .font(.subheadline)
-                        .foregroundColor(.black)
+                        .foregroundColor(Theme.primary)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -87,7 +87,7 @@ struct EditProfileView: View {
                     }
                     .font(.subheadline)
                     .fontWeight(.semibold)
-                    .foregroundColor(.black)
+                    .foregroundColor(Theme.primary)
                 }
             }
         }

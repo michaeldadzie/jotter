@@ -12,7 +12,7 @@ struct CreateJotView: View {
         NavigationStack {
             VStack {
                 HStack(alignment: .top) {
-                    CircularProfileImageView(user: user, size: .small)
+                    CircularProfileImage(user: user, size: .small)
                     VStack(alignment: .leading, spacing: 4) {
                         Text(user?.username ?? "")
                             .fontWeight(.semibold)
@@ -45,7 +45,7 @@ struct CreateJotView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel") { dismiss() }
                         .font(.subheadline)
-                        .foregroundColor(.black)
+                        .foregroundColor(Theme.primary)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -59,7 +59,7 @@ struct CreateJotView: View {
                     .disabled(viewModel.jot.isEmpty)
                     .font(.subheadline)
                     .fontWeight(.semibold)
-                    .foregroundColor(.black)
+                    .foregroundColor(Theme.primary)
                 }
             }
         }

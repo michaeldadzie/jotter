@@ -2,7 +2,6 @@ import Firebase
 import FirebaseFirestoreSwift
 
 struct ProfileService {
-    
     static func fetchJots(uid: String) async throws -> [Jot] {
         let snapshot = try await Firestore
             .firestore()

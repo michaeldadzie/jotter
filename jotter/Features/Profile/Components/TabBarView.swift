@@ -2,11 +2,11 @@ import SwiftUI
 
 struct TabBarView: View {
     @StateObject var viewModel: UserJotsViewModel
-    @State private var selectedFilter: ProfileThreadFilter = .threads
+    @State private var selectedFilter: TabBarFilter = .jots
     @Namespace var animation
     
     private var filterBarWidth: CGFloat {
-        let count = CGFloat(ProfileThreadFilter.allCases.count)
+        let count = CGFloat(TabBarFilter.allCases.count)
         return UIScreen.main.bounds.width / count - 20
     }
     
@@ -17,7 +17,7 @@ struct TabBarView: View {
     var body: some View {
         VStack {
             HStack {
-                ForEach(ProfileThreadFilter.allCases) { filter in
+                ForEach(TabBarFilter.allCases) { filter in
                     VStack {
                         Text(filter.title)
                             .font(.subheadline)
@@ -25,7 +25,7 @@ struct TabBarView: View {
                         
                         if selectedFilter == filter {
                             Rectangle()
-                                .foregroundColor(.black)
+                                .foregroundColor(Theme.primary)
                                 .frame(width: filterBarWidth, height: 1)
                                 .matchedGeometryEffect(id: "item", in: animation)
                             
@@ -45,7 +45,7 @@ struct TabBarView: View {
             
             LazyVStack {
                 ForEach(viewModel.jots) { jot in
-                    ThreadCellView(jot: jot)
+                    ThreadCell(jot: jot)
                 }
             }
         }

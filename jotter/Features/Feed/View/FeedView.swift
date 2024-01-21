@@ -2,6 +2,7 @@ import SwiftUI
 
 struct FeedView: View {
     @StateObject var viewModel = FeedViewModel()
+    @State private var showSheet = false
     
     var body: some View {
         NavigationStack {
@@ -17,12 +18,17 @@ struct FeedView: View {
             }
             .navigationTitle("Jotter")
             .navigationBarTitleDisplayMode(.inline)
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    Image(systemName: "arrow.counterclockwise")
-//                        .foregroundColor(.black)
-//                }
-//            }
+            .sheet(isPresented: $showSheet, onDismiss: {}, content: {
+                CreateJotView()
+            })
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button { showSheet.toggle() } label: {
+                        Image(systemName: "square.and.pencil")
+                            .foregroundColor(.black)
+                    }
+                }
+            }
         }
     }
 }

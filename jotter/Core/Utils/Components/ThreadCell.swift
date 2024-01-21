@@ -10,7 +10,6 @@ struct ThreadCell: View {
                 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
-                        // NavigationLink(value: jot.user) {}
                         Text(jot.user?.username ?? "")
                             .font(.footnote)
                             .fontWeight(.semibold)
@@ -19,18 +18,30 @@ struct ThreadCell: View {
                         
                         Text(jot.timestamp.timeStampString())
                             .font(.caption)
+                            #if !os(visionOS)
                             .foregroundColor(Color(.systemGray3))
+                            #endif
+                            #if os(visionOS)
+                            .foregroundColor(Color(.systemGray))
+                            #endif
                         
                         Button {
                             
                         } label: {
                             Image(systemName: "ellipsis")
+                                #if !os(visionOS)
                                 .foregroundColor(Color(.darkGray))
+                                #endif
                         }
+                        #if os(visionOS)
+                        .foregroundColor(Color(.systemGray))
+                        .buttonStyle(.plain)
+                        #endif
                     }
                     
                     Text(jot.jot)
                         .font(.footnote)
+                        .lineLimit(3)
                         .multilineTextAlignment(.leading)
                     
                     HStack(spacing: 16) {
@@ -58,17 +69,26 @@ struct ThreadCell: View {
                             Image(systemName: "paperplane")
                         }
                     }
+                    #if !os(visionOS)
                     .foregroundColor(Theme.primary)
-                    .padding(.vertical, 8)
+                    .padding(.vertical, 2)
+                    #endif
+                    #if os(visionOS)
+                    .foregroundColor(Color(.systemGray))
+                    .buttonStyle(.plain)
+                    #endif
                 }
             }
-            
+            #if !os(visionOS)
             Divider()
+            #endif
         }
         .padding()
-        //        .navigationDestination(for: User.self, destination: { user in
-        //            UserProfileView(user: user)
-        //        })
+        #if os(visionOS)
+        .background()
+        .cornerRadius(8)
+        .padding(.horizontal)
+        #endif
     }
 }
 

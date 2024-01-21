@@ -16,6 +16,9 @@ struct CircularProfileImage: View {
             Image(systemName: "person.circle.fill")
                 .resizable()
                 .frame(width: size.dimension, height: size.dimension)
+                #if os(visionOS)
+                .foregroundColor(.white)
+                #endif
                 .foregroundColor(Color(.systemGray4))
         }
     }

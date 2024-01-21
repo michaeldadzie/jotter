@@ -31,7 +31,12 @@ struct ProfileHeaderView: View {
             
             Spacer()
             
+            #if !os(visionOS)
             CircularProfileImage(user: user, size: .medium)
+            #endif
+            #if os(visionOS)
+            CircularProfileImage(user: user, size: .Large)
+            #endif
         }
     }
 }

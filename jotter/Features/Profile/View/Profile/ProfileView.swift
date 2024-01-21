@@ -22,10 +22,12 @@ struct ProfileView: View {
                             .fontWeight(.semibold)
                             .foregroundColor(.black)
                             .frame(width: 352, height: 32)
+                            #if !os(visionOS)
                             .overlay {
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color(.systemGray4), lineWidth: 1)
                             }
+                            #endif
                             .background(.white)
                             .cornerRadius(8)
                     }
@@ -47,6 +49,7 @@ struct ProfileView: View {
                     } label: {
                         Image(systemName: "line.3.horizontal")
                     }
+                    .buttonStyle(.plain)
 //                    Button {
 //                        AuthService.shared.signOut()
 //                    } label: {

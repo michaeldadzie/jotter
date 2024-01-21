@@ -16,6 +16,9 @@ struct ExploreView: View {
                             }
                         }
                         .padding(.vertical, 4)
+                        #if os(visionOS)
+                        .buttonStyle(.plain)
+                        #endif
                     }
                 }
             }

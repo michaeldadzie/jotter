@@ -45,7 +45,12 @@ struct CreateJotView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel") { dismiss() }
                         .font(.subheadline)
+                        #if !os(visionOS)
                         .foregroundColor(Theme.primary)
+                        #endif
+                        #if os(visionOS)
+                        .foregroundColor(.black)
+                        #endif
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -59,7 +64,12 @@ struct CreateJotView: View {
                     .disabled(viewModel.jot.isEmpty)
                     .font(.subheadline)
                     .fontWeight(.semibold)
+                    #if !os(visionOS)
                     .foregroundColor(Theme.primary)
+                    #endif
+                    #if os(visionOS)
+                    .foregroundColor(.black)
+                    #endif
                 }
             }
         }

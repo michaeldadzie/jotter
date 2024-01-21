@@ -14,6 +14,7 @@ struct SettingsView: View {
                                 .fontWeight(.semibold)
                                 .padding()
                         }
+                        .buttonStyle(.plain)
                         
                     }
                     

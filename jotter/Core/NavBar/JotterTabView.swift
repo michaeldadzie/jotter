@@ -50,11 +50,11 @@ struct JotterTabView: View {
                 .tag(4)
             
         }
-        .onChange(of: selectedTab, perform: { newVal in
+        .onChange(of: selectedTab) {
             if selectedTab != 2 {
                 previousTab = selectedTab
             }
-        })
+        }
         .sheet(isPresented: $showSheet, onDismiss: {}, content: {
             CreateJotView()
         })
@@ -62,8 +62,6 @@ struct JotterTabView: View {
     }
 }
 
-struct JotterTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        JotterTabView()
-    }
+#Preview {
+    JotterTabView()
 }

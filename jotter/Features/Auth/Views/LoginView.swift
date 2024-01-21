@@ -24,18 +24,19 @@ struct LoginView: View {
                     .autocapitalization(.none)
                     .modifier(AuthTextFieldModifier())
             }
+            .padding(.bottom, 12)
             
-            NavigationLink {
-                Text("ForgotView")
-            } label: {
-                Text("Forgot Password?")
-                    .font(.footnote)
-                    .fontWeight(.semibold)
-                    .padding(.vertical)
-                    .padding(.trailing, 28)
-                    .foregroundColor(.primary)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-            }
+//            NavigationLink {
+//                Text("ForgotView")
+//            } label: {
+//                Text("Forgot Password?")
+//                    .font(.footnote)
+//                    .fontWeight(.semibold)
+//                    .padding(.vertical)
+//                    .padding(.trailing, 28)
+//                    .foregroundColor(.primary)
+//                    .frame(maxWidth: .infinity, alignment: .trailing)
+//            }
             
             Button {
                 Task { try await viewModel.login() }
@@ -74,8 +75,6 @@ struct LoginView: View {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
+#Preview {
+    LoginView()
 }

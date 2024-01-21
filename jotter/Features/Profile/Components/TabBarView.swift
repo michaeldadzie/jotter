@@ -5,10 +5,12 @@ struct TabBarView: View {
     @State private var selectedFilter: TabBarFilter = .jots
     @Namespace var animation
     
+    #if !os(visionOS)
     private var filterBarWidth: CGFloat {
         let count = CGFloat(TabBarFilter.allCases.count)
         return UIScreen.main.bounds.width / count - 20
     }
+    #endif
     
     init(user: User) {
         self._viewModel = StateObject(wrappedValue: UserJotsViewModel(user: user))
@@ -23,6 +25,7 @@ struct TabBarView: View {
                             .font(.subheadline)
                             .fontWeight(selectedFilter == filter ? .semibold : .regular)
                         
+                        #if !os(visionOS)
                         if selectedFilter == filter {
                             Rectangle()
                                 .foregroundColor(Theme.primary)
@@ -34,6 +37,7 @@ struct TabBarView: View {
                                 .foregroundColor(.clear)
                                 .frame(width: filterBarWidth, height: 1)
                         }
+                        #endif
                     }
                     .onTapGesture {
                         withAnimation(.spring()) {

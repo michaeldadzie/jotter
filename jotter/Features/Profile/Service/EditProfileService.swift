@@ -1,6 +1,6 @@
 import Firebase
 import FirebaseStorage
-import Foundation
+import SwiftUI
 
 struct EditProfileService {
     static func uploadImage(_ image: UIImage) async throws -> String? {

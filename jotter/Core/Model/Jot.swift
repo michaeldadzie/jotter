@@ -1,5 +1,5 @@
 import Firebase
-import FirebaseFirestoreSwift
+import FirebaseFirestore
 
 struct Jot: Identifiable, Codable {
     @DocumentID var jotId: String?

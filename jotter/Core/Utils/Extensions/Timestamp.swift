@@ -1,4 +1,5 @@
 import Firebase
+import FirebaseFirestore
 
 extension Timestamp {
     func timeStampString() -> String {

@@ -1,6 +1,5 @@
-import Firebase
-import FirebaseFirestoreSwift
-
+import FirebaseAuth
+import FirebaseFirestore
 
 class AuthService {
     @Published var userSession: FirebaseAuth.User?

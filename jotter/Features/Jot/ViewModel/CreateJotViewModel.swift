@@ -1,4 +1,5 @@
-import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 
 class CreateJotViewModel: ObservableObject {
     @Published var jot = ""

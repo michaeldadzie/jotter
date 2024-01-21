@@ -1,5 +1,5 @@
 import Firebase
-import FirebaseFirestoreSwift
+import FirebaseFirestore
 
 struct ProfileService {
     static func fetchJots(uid: String) async throws -> [Jot] {

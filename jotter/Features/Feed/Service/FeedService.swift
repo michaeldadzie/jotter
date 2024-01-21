@@ -1,5 +1,5 @@
 import Firebase
-import FirebaseFirestoreSwift
+import FirebaseFirestore
 
 struct FeedService {
     

@@ -1,5 +1,5 @@
-import Firebase
-import FirebaseFirestoreSwift
+import FirebaseAuth
+import FirebaseFirestore
 
 class UserService {
     @Published var currentUser: User?

@@ -1,5 +1,6 @@
 import FirebaseCore
 import SwiftUI
+import os
 
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
@@ -11,11 +12,22 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct JotterApp: App {
+    @StateObject var viewModel = LaunchScreenViewModel()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
       
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ZStack {
+                ContentView()
+                
+                if viewModel.state != .completed {
+                    LaunchScreenView()
+                }
+            }
+            .environmentObject(viewModel)
         }
+        #if os(visionOS)
+        .defaultSize(CGSize(width: 600, height: 1000))
+        #endif
     }
 }
